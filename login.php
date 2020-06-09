@@ -31,21 +31,64 @@
                 header("location: home.html");
                 }
             else if(!$status){
-                echo('<p>wrong password or username<p/>');
+                // echo('<p class="bd-notification is-primary">wrong password or username<p/>');
+                echo('<div class="notification is-danger">
+                <button class="delete"></button>
+                Login Failed
+              </div>');
                 }
         }
         
     ?>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/combine/npm/bulma@0.8.0/css/bulma.min.css,npm/bulma@0.8.0/css/bulma.min.css">
 </head>
 <body>
-    <div class="wrapper">
-        <div class="container">
-            <form action="login.php" method="post">
-                <input type="text" value="" name="username" placeholder="Username">
+    <div class="columns is-desktop is-centered is-vcentered">
+        <div class="column is-one-quarter">
+            <!-- <form action="login.php" method="post">
                 <input type="password" name="password" id="password" placeholder="Password">
                 <input type="submit" value="Submit">
-            </form>
+            </form> -->
+            <form action="login.php" method="post">
+            <div class="field">
+                <p class="control has-icons-left has-icons-right">
+                    <input class="input" type="text" placeholder="username" name="username">
+                    <!-- <input type="text" value="" name="username" placeholder="Username"> -->
+                    <span class="icon is-small is-left">
+                        <i class="fas fa-user"></i>
+                    </span>
+                    <span class="icon is-small is-right">
+                    <i class="fas fa-check"></i>
+                    </span>
+                </p>
+            </div>
+            <div class="field">
+                <p class="control has-icons-left">
+                    <input class="input" type="password" placeholder="Password" name="password">
+                    <span class="icon is-small is-left">
+                    <i class="fas fa-lock"></i>
+                    </span>
+                </p>
+            </div>
+            <div class="field">
+                <p class="control">
+                    <input type="submit" value="Login" class="button is-success">
+                </p>
+            </div>
+        </form>
         </div> 
-    </div> 
+        </div> 
 </body>
+<script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+  (document.querySelectorAll('.notification .delete') || []).forEach(($delete) => {
+    $notification = $delete.parentNode;
+
+    $delete.addEventListener('click', () => {
+      $notification.parentNode.removeChild($notification);
+    });
+  });
+});
+</script>
 </html>

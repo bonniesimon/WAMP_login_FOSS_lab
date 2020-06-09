@@ -5,14 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <?php
+        // instead of loginusers, add your DATABASE name
         $con = mysqli_connect("localhost:3308", "root", "", "loginusers");
         // Check connection
         if($con === false){
             die("ERROR: Could not connect. " . mysqli_connect_error());
         }
+
+        
         $username = mysqli_real_escape_string($con, $_POST['username']);
         $password = mysqli_real_escape_string($con, $_POST['password']);
 
+        // here users is my table name
         $sql = "SELECT * FROM `users` WHERE username ='$username' and password ='$password'";
         $result = mysqli_query($con, $sql);
         // $row = mysqli_fetch_array($resutl, MYSQLI_ASSOC);

@@ -50,10 +50,10 @@
             right:0;
             top:0;
         }
-        /* .section{
+        .section{
             margin-top:3rem;
             height:100vh;
-        } */
+        }
     </style>
 </head>
 <body>

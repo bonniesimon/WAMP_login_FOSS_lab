@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <?php
+        $status = false;
         // instead of loginusers, add your DATABASE name
         $con = mysqli_connect("localhost:3308", "root", "", "loginusers");
         // Check connection
@@ -13,21 +14,26 @@
         }
 
         
-        $username = mysqli_real_escape_string($con, $_POST['username']);
-        $password = mysqli_real_escape_string($con, $_POST['password']);
+        $username = mysqli_real_escape_string($con, (isset($_POST['username']) ? $_POST['username'] : ''));
+        $password = mysqli_real_escape_string($con, (isset($_POST['password']) ? $_POST['password'] : ''));
 
-        // here users is my table name
-        $sql = "SELECT * FROM `users` WHERE username ='$username' and password ='$password'";
-        $result = mysqli_query($con, $sql);
-        // $row = mysqli_fetch_array($resutl, MYSQLI_ASSOC);
+        if($username != '' && $password != ''){
 
-        $count = mysqli_num_rows($result);
-        if ($count == 1){
-            echo "working";
-            header("location: home.html");
-            }else{
-                header("location: error.html");
-            }
+            // here users is my table name
+            $sql = "SELECT * FROM `users` WHERE username ='$username' and password ='$password'";
+            $result = mysqli_query($con, $sql);
+            // $row = mysqli_fetch_array($resutl, MYSQLI_ASSOC);
+    
+            $count = mysqli_num_rows($result);
+            if($count == 1) $status = true;
+            if ($count == 1){
+                echo "working";
+                header("location: home.html");
+                }
+            else if(!$status){
+                echo('<p>wrong password or username<p/>');
+                }
+        }
         
     ?>
 </head>

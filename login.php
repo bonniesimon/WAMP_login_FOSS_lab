@@ -32,7 +32,7 @@
                 }
             else if(!$status){
                 // echo('<p class="bd-notification is-primary">wrong password or username<p/>');
-                echo('<div class="notification is-danger">
+                echo('<div class="notification is-danger is-light">
                 <button class="delete"></button>
                 Login Failed
               </div>');
@@ -43,6 +43,15 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/combine/npm/bulma@0.8.0/css/bulma.min.css,npm/bulma@0.8.0/css/bulma.min.css">
 </head>
 <body>
+    <div class="navbar is-dark is-spaced is-fixed-top">
+        <div class="nav-brand px-1">
+            <div class="nav-item container">
+                <h1>Login Page</h1>
+
+                </div>
+        </div>
+    </div>
+    <div class="section">
     <div class="columns is-desktop is-centered is-vcentered">
         <div class="column is-one-quarter">
             <!-- <form action="login.php" method="post">
@@ -78,6 +87,7 @@
         </form>
         </div> 
         </div> 
+        </div>
 </body>
 <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
 <script>

@@ -32,15 +32,29 @@
                 }
             else if(!$status){
                 // echo('<p class="bd-notification is-primary">wrong password or username<p/>');
-                echo('<div class="notification is-danger is-light">
-                <button class="delete"></button>
-                Login Failed
+                echo('<div class="container is-fluid">
+                <div class="notification is-link is-danger ">
+                  <button class="delete"></button>
+                  Login Failed
+                </div>
               </div>');
                 }
         }
         
     ?>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/combine/npm/bulma@0.8.0/css/bulma.min.css,npm/bulma@0.8.0/css/bulma.min.css">
+    <style>
+        .notification{
+            position:absolute;
+            z-index:1000;
+            right:0;
+            top:0;
+        }
+        .section{
+            margin-top:3rem;
+            height:100vh;
+        }
+    </style>
 </head>
 <body>
     <div class="navbar is-dark is-spaced is-fixed-top">
@@ -61,7 +75,7 @@
             <form action="login.php" method="post">
             <div class="field">
                 <p class="control has-icons-left has-icons-right">
-                    <input class="input" type="text" placeholder="username" name="username">
+                    <input class="input" type="text" placeholder="username" name="username" autocomplete="off">
                     <!-- <input type="text" value="" name="username" placeholder="Username"> -->
                     <span class="icon is-small is-left">
                         <i class="fas fa-user"></i>
